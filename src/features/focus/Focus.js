@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Button, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 import { TextInput } from 'react-native-paper'
 import RoundedButton from '../../components/RoundedButton'
+import {fontSize} from '../../utils/Sizes'
+import {colors} from '../../utils/Colors'
 
 const Focus = ({addStatus}) => {
     const [tmpData, setTmpData] = useState(null)
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     btn: {
-        borderColor: '#fff',
+        borderColor: colors.white,
         borderWidth: 2,
         width: '60px',
         height: '60px',
@@ -56,8 +58,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     btnContent: {
-        color: '#fff',
-        fontSize: 24,
+        color: colors.white,
+        fontSize: fontSize.xl,
         alignSelf: 'center',
 
     }
