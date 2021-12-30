@@ -10,7 +10,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <Text>{focus}</Text> */}
-      {focus ? <Text>That should be row</Text> : <Focus/>}
+      {focus ? focus : <Focus addStatus={setFocus}/>}
       <StatusBar style="auto" />
     </View>
   );
