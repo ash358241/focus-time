@@ -4,43 +4,53 @@ import { ProgressBar } from 'react-native-paper';
 import CountDown from '../../components/CountDown';
 import { colors } from '../../utils/Colors';
 import { fontSize, sizes, spacing } from '../../utils/Sizes';
+import Timing from '../timing/Timing';
 
 const Timer = ({ focus }) => {
+    const [minutes, setMinutes] = useState(0.1)
     const [isStarted, setIsStarted] = useState(false)
-
     const [progress, setProgress] = useState(1)
 
     const onProgress = (progress) => {
         setProgress(progress)
     }
-    
+
+    const onChangeTime = (time) => {
+        setMinutes(time)
+        setProgress(1)
+        setIsStarted(false)
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.countdown}>
-                <CountDown isPaused={!isStarted} onProgress={onProgress} />
+                <CountDown minutes={minutes} isPaused={!isStarted} onProgress={onProgress} />
             </View>
             <View style={{ paddingTop: spacing.xl }}>
                 <Text style={styles.title}>Focusing on: </Text>
                 <Text style={styles.task}>{focus}</Text>
             </View>
-            <ProgressBar 
-            progress={progress}
-            style={{color: '#5E84E2',height: 10, marginTop: 10}} />
+            <ProgressBar
+                progress={progress}
+                style={{ color: '#5E84E2', height: 10, marginTop: 10 }} />
+            <View>
+                <Timing onChangeTime={onChangeTime}/>
+            </View>
             <View style={styles.btnWrapper}>
-            {
-                isStarted ?
-                    (
-                        <TouchableOpacity style={styles.btn} onPress={() => setIsStarted(false)}>
-                            <Text style={styles.textStyle}>Pause</Text>
-                        </TouchableOpacity>
-                    )
-                    :
-                    (
-                        <TouchableOpacity style={styles.btn} onPress={() => setIsStarted(true)}>
-                            <Text style={styles.textStyle}>Start</Text>
-                        </TouchableOpacity>
-                    )
-            }
+                {
+                    isStarted ?
+                        (
+                            <TouchableOpacity style={styles.btn} onPress={() => setIsStarted(false)}>
+                                <Text style={styles.textStyle}>Pause</Text>
+                            </TouchableOpacity>
+                        )
+                        :
+                        (
+                            <TouchableOpacity style={styles.btn} onPress={() => setIsStarted(true)}>
+                                <Text style={styles.textStyle}>Start</Text>
+                            </TouchableOpacity>
+                        )
+                }
             </View>
 
 
@@ -90,5 +100,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: spacing.xl,
-    }
+    },
+    // timer: {
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     paddingTop: spacing.xl,
+    // }
 })
