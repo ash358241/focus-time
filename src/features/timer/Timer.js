@@ -7,7 +7,9 @@ import {sizes, spacing} from '../../utils/Sizes';
 const Timer = ({focus}) => {
     return (
         <View style={styles.container}>
+            <View style={styles.countdown}>
             <CountDown/>
+            </View>
            <View style={{paddingTop: spacing.xl}}>
            <Text style={styles.title}>Focusing on: </Text>
             <Text style={styles.task}>{focus}</Text>
@@ -30,5 +32,10 @@ const styles = StyleSheet.create({
         color: colors.white,
         textAlign: 'center',
         fontWeight: 'bold',
+    },
+    countdown: {
+        flex: 0.5,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 })
