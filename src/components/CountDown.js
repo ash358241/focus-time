@@ -31,9 +31,12 @@ const CountDown = ({
     }
     
     useEffect(() => {
+        if(isPaused){
+            return;
+        }
         interval.current = setInterval(countDown, 1000)
         return () => clearInterval(interval.current)
-    }, [])
+    }, [isPaused])
     return (
         <View>
             <Text style={styles.text}>{formatTime(minute)} : {formatTime(second)}</Text>
@@ -45,9 +48,10 @@ export default CountDown
 
 const styles = StyleSheet.create({
     text: {
-        color: 'white',
+        color: colors.white,
         fontSize: fontSize.xxl,
         padding: spacing.xl,
         backgroundColor: 'rgba(94, 132, 226, 0.3)',
-    }
+    },
+    
 })
