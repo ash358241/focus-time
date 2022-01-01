@@ -1,11 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import CountDown from '../../components/CountDown';
 import {colors} from '../../utils/Colors';	
 import {sizes, spacing} from '../../utils/Sizes';	
 
 const Timer = ({focus}) => {
     return (
         <View style={styles.container}>
+            <CountDown/>
            <View style={{paddingTop: spacing.xl}}>
            <Text style={styles.title}>Focusing on: </Text>
             <Text style={styles.task}>{focus}</Text>
