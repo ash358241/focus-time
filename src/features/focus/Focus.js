@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
     btn: {
         borderColor: colors.white,
         borderWidth: 2,
-        width: '60px',
-        height: '60px',
+        // padding: 20,
+        width: 50,
+        height: 50,
         borderRadius: 100,
         alignItems: 'center',
         justifyContent: 'center',
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     btnContent: {
         color: colors.white,
         fontSize: fontSize.xl,
-        alignSelf: 'center',
+        // alignSelf: 'center',
 
     }
 })
