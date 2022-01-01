@@ -6,8 +6,9 @@ import { fontSize, spacing } from '../utils/Sizes'
 const minsToMills = mins => mins * 1000 * 60
 
 const CountDown = ({
-    minutes = 20,
+    minutes = 1,
     isPaused,
+    onProgress
 }) => {
     const [millis, setMillis] = useState(minsToMills(minutes))
 
@@ -26,6 +27,7 @@ const CountDown = ({
             }
             const timeLeft = time - 1000 
             // report the progress
+            onProgress(timeLeft / minsToMills(minutes))
             return timeLeft;
         })
     }

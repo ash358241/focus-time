@@ -1,21 +1,32 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ProgressBar } from 'react-native-paper';
 import CountDown from '../../components/CountDown';
 import { colors } from '../../utils/Colors';
 import { fontSize, sizes, spacing } from '../../utils/Sizes';
 
 const Timer = ({ focus }) => {
     const [isStarted, setIsStarted] = useState(false)
-    console.log(isStarted)
+
+    const [progress, setProgress] = useState(1)
+
+    const onProgress = (progress) => {
+        setProgress(progress)
+    }
+    
     return (
         <View style={styles.container}>
             <View style={styles.countdown}>
-                <CountDown isPaused={!isStarted} />
+                <CountDown isPaused={!isStarted} onProgress={onProgress} />
             </View>
             <View style={{ paddingTop: spacing.xl }}>
                 <Text style={styles.title}>Focusing on: </Text>
                 <Text style={styles.task}>{focus}</Text>
             </View>
+            <ProgressBar 
+            progress={progress}
+            style={{color: '#5E84E2',height: 10, marginTop: 10}} />
+            <View style={styles.btnWrapper}>
             {
                 isStarted ?
                     (
@@ -30,6 +41,7 @@ const Timer = ({ focus }) => {
                         </TouchableOpacity>
                     )
             }
+            </View>
 
 
         </View>
@@ -45,11 +57,13 @@ const styles = StyleSheet.create({
     title: {
         color: colors.white,
         textAlign: 'center',
+        fontSize: fontSize.xl,
     },
     task: {
         color: colors.white,
         textAlign: 'center',
         fontWeight: 'bold',
+        fontSize: fontSize.lg,
     },
     countdown: {
         flex: 0.5,
@@ -71,5 +85,10 @@ const styles = StyleSheet.create({
     textStyle: {
         color: colors.white,
         fontSize: fontSize.xl,
+    },
+    btnWrapper: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: spacing.xl,
     }
 })

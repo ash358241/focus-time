@@ -9,10 +9,11 @@ import {spacing} from './src/utils/Sizes';
 
 
 export default function App() {
-  const [focus, setFocus] = useState(null);
+  const [focus, setFocus] = useState('something...');
   return (
     <View style={styles.container}>
-      {focus ? <Timer focus={focus}/> : <Focus addStatus={setFocus}/>}
+      {/* {focus ? <Timer focus={focus}/> : <Focus addStatus={setFocus}/>} */}
+      {focus ? <Timer focus={focus}/> : null}
     </View>
   );
 }
